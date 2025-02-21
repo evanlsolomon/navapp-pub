@@ -10,10 +10,10 @@ This is a navigation app I am building to learn about routing algorithms, and ma
 
 ## Some tools I am learning along the way:
 - React (web) and ReactNative with Expo (iOS/android) for component development
-- OpenMabLibre for map style and display
-- Protmaps for MVTiles (built upon OpenStreetMap data)
-- Mapbox for place suggestions (search)
-- OSRM (openstreetmap routing machine) for generating routes 
+- [MabLibreGL JS](https://maplibre.org/) for map style and display
+- [Protmaps](https://protomaps.com/) for MVTiles (built upon OpenStreetMap data)
+- Mapbox APIs for place suggestions (search)
+- [OSRM](https://project-osrm.org/) (Open Source Routing Machine) for generating routes 
 
 ## Some areas where I would like to make progress include:
 ### Security:
