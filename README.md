@@ -10,6 +10,8 @@ This is a navigation app I am building to learn about routing algorithms, and ma
 
 ## Some tools I am learning along the way:
 - React (web) and ReactNative with Expo (iOS/android) for component development
+- Cloudflare: Workers and R2 storage
+- Supabase for user auth
 - [MabLibreGL JS](https://maplibre.org/) for map style and display
 - [Protmaps](https://protomaps.com/) for MVTiles (built upon OpenStreetMap data)
 - Mapbox APIs for place suggestions (search)
@@ -17,13 +19,15 @@ This is a navigation app I am building to learn about routing algorithms, and ma
 
 ## Some areas where I would like to make progress include:
 ### Security:
-- Apply user authentication database + logic. This is so that I can publicly host the app, and actually use it outside my home, while protecting my accounts with the APIs I am using.
-- Complete the transition to making all server calls externally. Right now, OSRM is on localhost server
-- Query MVTiles from a server I manage.  Currently I am requesting map data from the Protomaps API
+- [x] Apply user authentication database + logic. This is so that I can publicly host the app, and actually use it outside my home, while protecting my accounts with the APIs I am using.  
+- [x] Query MVTiles from a server I manage.  Currently I am requesting map data from the Protomaps API
+- [x] Remove secrets and sensitive info so I can publish the front end code
+- [ ] Complete the transition to making all server calls externally. Right now, OSRM is on localhost server
+
 
 ### User Experience:
-- Add turn by turn directions view.
-- Poll user device location and bearing to enable actual navigation.
+- [ ] Add turn by turn directions view.
+- [ ] Poll user device location and bearing to enable actual navigation.
 
 ### Why did I invest time in this?
 Maps are (mostly) good, and it's fun to make tools that you can imagine using in your everyday life. 
