@@ -1,5 +1,5 @@
 # navapp:
-This is a navigation app I am building to learn about routing algorithms, and mapping apps
+This is a navigation app I am building to learn about routing algorithms, and mapping tools
 
 ### Current form in a browser:
 ![web4](https://github.com/user-attachments/assets/37b6d935-6095-49d6-8138-192837370418)
@@ -20,7 +20,7 @@ This is a navigation app I am building to learn about routing algorithms, and ma
 ## Some areas where I would like to make progress include:
 ### Security:
 - [x] Apply user authentication database + logic. This is so that I can publicly host the app, and actually use it outside my home, while protecting my accounts with the APIs I am using.  
-- [x] Query MVTiles from a server I manage.  Currently I am requesting map data from the Protomaps API
+- [x] Query PMTiles from a server I manage.  Currently I am requesting map data from the Protomaps API
 - [x] Remove secrets and sensitive info so I can publish the front end code
 - [ ] Complete the transition to making all server calls externally. Right now, OSRM is on localhost server
 
