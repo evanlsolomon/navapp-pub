@@ -28,4 +28,3 @@ This is a navigation app I am building to learn about routing algorithms, and ma
 ### Why did I invest time in this?
 Maps are (mostly) good, and it's fun to make tools that you can imagine using in your everyday life. 
 
-**The code has API keys hardcoded inside it, so it's not published. Removing that limitation is high on my to-do list.**
