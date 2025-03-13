@@ -1,0 +1,117 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+#formContainer {
+  height: 100vh;
+  width: 25%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#inputDialog {
+  z-index: 10;
+  max-width: 300px;
+  position: fixed;
+
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5px;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+
+.search-box-icon {
+  width: 10%;
+  height: 1.0em;
+  vertical-align: -0.125em;
+}
+
+.destination-card-textarea {
+  display: inline-block;
+  overflow-x: hidden;
+  max-width: 80%;
+  box-sizing: border-box;
+}
+
+
+.destination-card-icons-tray {
+  margin-top: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: auto;
+}
+
+.destination-card {
+  text-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+.place-search-box {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+.search-input {
+  padding: 10px;
+  width: 80%;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.search-result-card {
+  padding: 2px;
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 1px;
+  border-radius: 1px;
+  border: 1px solid #ddd;
+}
+
+label {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+
+/* push zoom contol down below address form */
+
+
+/* #mapContainer {
+  height: 100vh;
+  width: 75%;
+  position: absolute;
+
+} */
