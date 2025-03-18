@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react'
 
 import DirectionsForm from './directions/DirectionsForm'
 import MapLibre from './MapLibre'
+
+import maplibregl from 'maplibre-gl'
+import { Protocol } from 'pmtiles'
+
+
 import { Place } from './utils/types'
 import SearchForm from './search/SearchForm'
 import { createClient, Session } from '@supabase/supabase-js'
@@ -36,6 +41,14 @@ function App() {
     return () => subscription.unsubscribe()
   }, [])
 
+  useEffect(() => {
+    const protocol = new Protocol()
+    maplibregl.addProtocol('pmtiles', protocol.tile)
+    return () => {
+      maplibregl.removeProtocol('pmtiles')
+    }
+  }, [])
+
   function toggleDialogState(newState: string): void {
     console.log('inside App, toggleDialogState')
     setDialogState(newState)
@@ -51,7 +64,11 @@ function App() {
           {dialogState === 'search' && <SearchForm places={places} setPlaces={setPlaces} toggleDialogState={toggleDialogState} />}
           {dialogState === 'directions' && <DirectionsForm dialogState={dialogState} toggleDialogState={toggleDialogState} places={places} setPlaces={setPlaces} setRoute={setRoute} />}
         </div>
-        <MapLibre places={places} route={route} />
+        <MapLibre
+          places={places}
+          route={route}
+          maplibregl={maplibregl}
+        />
       </>
     )
   }

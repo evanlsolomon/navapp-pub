@@ -1,33 +1,39 @@
 import { useEffect, useRef } from 'react';
-import maplibregl from 'maplibre-gl'
+
+// this is now done in the parent component
+// import maplibregl from 'maplibre-gl'
+// import { Protocol } from 'pmtiles'
+
 import { Map, MapRef, NavigationControl, Source, Layer } from '@vis.gl/react-maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './index.css'
-import { Protocol } from 'pmtiles'
+
+
 import { Place } from "./utils/types";
 import { layers, namedFlavor } from '@protomaps/basemaps';
 import PlaceMarkers from "./PlaceMarkersMapLibre";
 import { routeStyle } from './mapstyle';
 
-function MapLibre({ places, route }: { places: Place[], route: any }) {
+function MapLibre({
+  places,
+  route,
+  maplibregl
+}: {
+  places: Place[],
+  route: any,
+  maplibregl: any
+}) {
 
   const DEFAULT_MAP_ZOOM = 3;
   const DEFAULT_LONGITUDE = -99.6226;
   const DEFAULT_LATITUDE = 37.193;
-  const PMTILES_URL = import.meta.env.VITE_PMTILES_URL
+
+  const PMTILES_REMOTE_URL_US: string = import.meta.env.VITE_PMTILES_REMOTE_URL_US
+  const PMTILES_REMOTE_ZXY_URL_US: string = import.meta.env.VITE_PMTILES_REMOTE_ZXY_URL_US
+
+  const PMTILES_LOCALHOST_URL_US: string = import.meta.env.VITE_PMTILES_LOCALHOST_URL_US
+  const PMTILES_LOCALHOST_ZXY_URL_US: string = import.meta.env.VITE_PMTILES_LOCALHOST_ZXY_URL_US
   const mapRef = useRef<MapRef>(null);
-
-  useEffect(() => {
-    const protocol = new Protocol()
-    maplibregl.addProtocol('pmtiles', protocol.tile)
-    return () => {
-      maplibregl.removeProtocol('pmtiles')
-    }
-  }, [])
-
-  places.forEach((place) => {
-    console.log('place:', place)
-  })
 
   // if there are places, fit the map to the bounds of the places
   if (places.length > 0) {
@@ -57,15 +63,25 @@ function MapLibre({ places, route }: { places: Place[], route: any }) {
         }}
         mapStyle={{
           version: 8,
-          glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
           sources: {
             protomaps: {
               type: 'vector',
-              tiles: [PMTILES_URL]
+              // only one of the below url/tiles properties:
+              // remote:
+              url: PMTILES_REMOTE_URL_US,
+              // tiles: [PMTILES_REMOTE_ZXY_URL_US], 
+
+              // local:
+              // url: PMTILES_LOCALHOST_URL_US, // this works
+              // tiles: [PMTILES_LOCALHOST_ZXY_URL_US], // this works
+              maxzoom: 15 // overzooming
             }
           },
-          layers: layers("protomaps", namedFlavor("light"), { lang: "en" })
+          glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
+          layers: layers("protomaps", namedFlavor("light"), { lang: "en" }),
+          sprite: "https://protomaps.github.io/basemaps-assets/sprites/v4/light"
         }}
+        mapLib={maplibregl}
       >
         <NavigationControl position="top-right" />
         {places.length > 0 && <PlaceMarkers places={places} />}
