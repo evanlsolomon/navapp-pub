@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 // import maplibregl from 'maplibre-gl'
 // import { Protocol } from 'pmtiles'
 
-import { Map, MapRef, NavigationControl, Source, Layer } from '@vis.gl/react-maplibre';
+import { Map, MapRef, GeolocateControl, NavigationControl, Source, Layer } from '@vis.gl/react-maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './index.css'
 
@@ -29,10 +29,7 @@ function MapLibre({
   const DEFAULT_LATITUDE = 37.193;
 
   const PMTILES_REMOTE_URL_US: string = import.meta.env.VITE_PMTILES_REMOTE_URL_US
-  const PMTILES_REMOTE_ZXY_URL_US: string = import.meta.env.VITE_PMTILES_REMOTE_ZXY_URL_US
 
-  const PMTILES_LOCALHOST_URL_US: string = import.meta.env.VITE_PMTILES_LOCALHOST_URL_US
-  const PMTILES_LOCALHOST_ZXY_URL_US: string = import.meta.env.VITE_PMTILES_LOCALHOST_ZXY_URL_US
   const mapRef = useRef<MapRef>(null);
 
   // if there are places, fit the map to the bounds of the places
@@ -66,14 +63,7 @@ function MapLibre({
           sources: {
             protomaps: {
               type: 'vector',
-              // only one of the below url/tiles properties:
-              // remote:
               url: PMTILES_REMOTE_URL_US,
-              // tiles: [PMTILES_REMOTE_ZXY_URL_US], 
-
-              // local:
-              // url: PMTILES_LOCALHOST_URL_US, // this works
-              // tiles: [PMTILES_LOCALHOST_ZXY_URL_US], // this works
               maxzoom: 15 // overzooming
             }
           },
@@ -83,6 +73,7 @@ function MapLibre({
         }}
         mapLib={maplibregl}
       >
+        <GeolocateControl position="top-right" />
         <NavigationControl position="top-right" />
         {places.length > 0 && <PlaceMarkers places={places} />}
         {route &&

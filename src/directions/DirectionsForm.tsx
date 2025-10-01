@@ -8,6 +8,7 @@ import { queryOSRMBackend } from '../utils/queryOSRMBackend'
 import { Place } from '../utils/types'
 import { TrashIcon, PlusIcon, XIcon, MinusIcon } from '../icons'
 import { useState } from 'react'
+import { queryValhallaBackend } from '../utils/queryValhallaBackend'
 
 
 function DirectionsForm(
@@ -45,8 +46,8 @@ function DirectionsForm(
     e.preventDefault(e);
     e.stopPropagation(e);
 
-    const route_data = await queryOSRMBackend(places)
-    // const route_data = await queryOSRMBackend(places[0], places[1])
+    const route_data = await queryValhallaBackend(places)
+    // const route_data = await queryOSRMBackend(places)
     // console.log(`inside directionsButtonClicked, route_data: ${route_data}`)
     setRoute(route_data)
     setDirectionsCalledOnAllPlaces(true)

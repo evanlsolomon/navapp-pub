@@ -28,3 +28,10 @@ dist-ssr
 #example data
 src/suggest_response_format.json
 src/exampleRouteResponse.json
+
+# cloudflare
+.wrangler*
+wrangler*
+.dev.vars*
+
+claude.md
