@@ -4,21 +4,22 @@ import { Place } from '../utils/types'
 
 function SearchResultCard({ name, address, geometry, setSelectedResult }: any) {
 
-  function handleResultSelected(event:any){
+  function handleResultSelected(event: any) {
     console.log('inside handleResultSelected')
     event.preventDefault()
     event.stopPropagation()
-    const new_place : Place = {
-      id:`${geometry.latitude}${geometry.longitude}`, 
-      name:name, 
-      address:address, 
-      geometry:geometry}
+    const new_place: Place = {
+      id: `${geometry.latitude}${geometry.longitude}`,
+      name: name,
+      address: address,
+      geometry: geometry
+    }
 
-      setSelectedResult(new_place)
+    setSelectedResult(new_place)
   }
 
   return (
-    <div className='search-result-card' onClick={(e:any)=> handleResultSelected(e)}>
+    <div className='search-result-card' onClick={(e: any) => handleResultSelected(e)}>
       <div>Name: {name}</div>
       <div>Address: {address}</div>
     </div>

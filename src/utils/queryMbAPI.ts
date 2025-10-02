@@ -31,8 +31,11 @@ function parseSearchResults(data: any): Place[] {
   return results
 }
 
+// async function reverseQueryMbAPI(lat: string, long:string): Promise<Place> {
 
-async function queryRemoteAPI(searchValue: string): Promise<Place[]> {
+// }
+
+async function forwardQueryMbAPI(searchValue: string): Promise<Place[]> {
 
   const SB_LOCALSTORAGE_KEY = `sb-${import.meta.env.VITE_SUPABASE_DOMAIN}-auth-token`;
 
@@ -46,4 +49,4 @@ async function queryRemoteAPI(searchValue: string): Promise<Place[]> {
   return parsed_results
 }
 
-export { queryRemoteAPI } 
+export { forwardQueryMbAPI } 

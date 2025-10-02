@@ -3,9 +3,10 @@ import '../index.css'
 import { useState } from 'react'
 import { SearchIcon, DirectionsIcon, XIcon } from '../icons'
 import { SearchResults } from './SearchResults'
-import { queryRemoteAPI } from '../utils/queryAPI'
+import { forwardQueryMbAPI } from '../utils/queryMbAPI'
 import { Place } from '../utils/types'
 import SearchBoxForFormInputField from './SearchBoxForFormInputField'
+import { UseCurrentLocationCard } from './UseCurrentLocationCard'
 
 
 function SearchBoxForForm(
@@ -33,7 +34,7 @@ function SearchBoxForForm(
 
   async function executeSearchRequest(): Promise<void> {
 
-    const parsed_results = await queryRemoteAPI(value)
+    const parsed_results = await forwardQueryMbAPI(value)
     setSearchResults(parsed_results)
   }
 
@@ -69,8 +70,10 @@ function SearchBoxForForm(
       <div className='place-search-box'>
         <SearchBoxForFormInputField onBlur={handleSearchBoxBlur} placeholder={placeholder} value={value} handleSearchBoxChange={handleSearchBoxChange} />
         {(value.length > 0) && <XIcon onClick={() => setValue('')} />}
-
       </div>
+      {(value.length > 0) &&
+        <UseCurrentLocationCard setSelectedResult={handleSearchResultSelection} />
+      }
       {(value.length >= 3) &&
         < SearchResults
           searchResults={searchResults}

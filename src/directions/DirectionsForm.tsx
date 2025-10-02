@@ -47,8 +47,6 @@ function DirectionsForm(
     e.stopPropagation(e);
 
     const route_data = await queryValhallaBackend(places)
-    // const route_data = await queryOSRMBackend(places)
-    // console.log(`inside directionsButtonClicked, route_data: ${route_data}`)
     setRoute(route_data)
     setDirectionsCalledOnAllPlaces(true)
   }
